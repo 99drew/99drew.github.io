@@ -1,0 +1,124 @@
+body {
+	background-color: transparent !important;
+	font-size: 16px;
+}
+
+:root {
+	--border-radius: .5rem;
+	--padding: 1rem;
+}
+
+/* GLOBAL CLASSES */
+/*CARDS*/
+.card .card__picture {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/*BG*/
+.bg {
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100%;
+}
+
+.bg--body {
+	background-image: url("../img/bg-html.png");
+}
+
+/*EMPHASYS TITLE*/
+.emp-title {
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: start;
+	gap: 8px;
+}
+
+.emp-title i {
+	font-size: 1rem;
+	margin-top: 8px;
+}
+
+.emp-title span {
+	font-size: 2rem;
+}
+
+
+/*HEADER SECTION*/
+.navbar {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+/* INTRO SECTION */
+#intro .intro__image {
+	height: 600px;
+	object-fit: contain;
+}
+
+/* SKILLS SECTION */
+#Skills {
+	margin-top: -48px;
+}
+
+#Skills .skills__content {
+	/*	backdrop-filter: blur(16px) saturate(180%);
+	background-color: rgba(255, 255, 255, 0.50);
+	border-radius: var(--border-radius);
+	padding: 2rem;
+	position: relative;
+*/
+}
+
+#Skills .card--skills {
+	padding: 1em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5em;
+}
+
+#Skills .card--skills .card__picture {
+	width: 100px;
+	height: 100px;
+	object-fit: contain;
+}
+
+#Skills .card--skills .card__title {
+	text-align: center;
+	font-size: 1.25em;
+}
+
+/* ABOUTE ME SECTION */
+#AboutMe .quote-content {
+	margin-top: -85px;
+}
+
+#AboutMe .card__quote {
+	background-color: transparent;
+	border: unset;
+	width: 50%;
+}
+
+#AboutMe .card__quote .card-header {
+	border-bottom: unset;
+}
+
+#AboutMe .card__quote .card-body {
+	padding-left: 0;
+}
+
+#AboutMe .card__quote * {
+	color: #fff;
+}
+
+/* CONTACT SECTION */
+#Contact .list-group-item {
+	background-color: transparent;
+	color: #FFF;
+}
