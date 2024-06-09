@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/build/static/css/main.6dc1ed15.css",
-    "main.js": "/build/static/js/main.6815ba72.js",
-    "static/js/787.23f839b9.chunk.js": "/build/static/js/787.23f839b9.chunk.js",
-    "static/media/bg-html.png": "/build/static/media/bg-html.518b37b24e8a24cc3a13.png",
-    "static/media/avatar.png": "/build/static/media/avatar.b07c7f29fb08757c24a8.png",
-    "static/media/coffee-person.svg": "/build/static/media/coffee-person.5e4b8bd903b86b88f4652cc22c88e28e.svg",
-    "index.html": "/build/index.html",
-    "main.6dc1ed15.css.map": "/build/static/css/main.6dc1ed15.css.map",
-    "main.6815ba72.js.map": "/build/static/js/main.6815ba72.js.map",
-    "787.23f839b9.chunk.js.map": "/build/static/js/787.23f839b9.chunk.js.map"
+    "main.css": "/99drew.github.io/static/css/main.d3ff1a8c.css",
+    "main.js": "/99drew.github.io/static/js/main.d236795a.js",
+    "static/js/787.23f839b9.chunk.js": "/99drew.github.io/static/js/787.23f839b9.chunk.js",
+    "static/media/bg-html.png": "/99drew.github.io/static/media/bg-html.518b37b24e8a24cc3a13.png",
+    "static/media/avatar.png": "/99drew.github.io/static/media/avatar.b07c7f29fb08757c24a8.png",
+    "static/media/coffee-person.svg": "/99drew.github.io/static/media/coffee-person.5e4b8bd903b86b88f4652cc22c88e28e.svg",
+    "index.html": "/99drew.github.io/index.html",
+    "main.d3ff1a8c.css.map": "/99drew.github.io/static/css/main.d3ff1a8c.css.map",
+    "main.d236795a.js.map": "/99drew.github.io/static/js/main.d236795a.js.map",
+    "787.23f839b9.chunk.js.map": "/99drew.github.io/static/js/787.23f839b9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6dc1ed15.css",
-    "static/js/main.6815ba72.js"
+    "static/css/main.d3ff1a8c.css",
+    "static/js/main.d236795a.js"
   ]
 }
