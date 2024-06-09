@@ -7,9 +7,9 @@ import Contact from './contact.js';
 
 function Body() {
     return (
-        <body>
+        <main>
             <Intro /><Skills /><AboutMe /><Works /><ProfessionalExperience /><Contact />
-        </body>
+        </main>
     );
 }
 

@@ -1,8 +1,8 @@
 {
   "name": "99drew.github.io",
   "version": "0.1.0",
-  "homepage": "https://99drew.github.io/build",
-  "private": false,
+  "homepage": "99drew.github.io/",
+  "private": true,
   "dependencies": {
     "@fontawesome/fontawesome-svg-core": "^6.3.0",
     "@fontawesome/free-regular-svg-icons": "^6.3.0",
@@ -20,8 +20,6 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
