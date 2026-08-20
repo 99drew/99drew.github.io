@@ -21,17 +21,46 @@ body {
 	padding-top: calc(var(--section-gap) + 3rem);
 }
 
-/*BG*/
-.bg {
-	background-size: cover;
-	background-position: top center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	min-height: 100vh;
+/* BG — arte decorativa em SVG, gerada em backgroundArt.js (ver esse arquivo
+   pro motivo de não ser mais uma imagem estática) */
+.bg-art-root {
+	position: relative;
+	overflow: hidden;
 }
 
-.bg--body {
-	background-image: url("../img/bg-html.png");
+.bg-art {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	z-index: 0;
+	pointer-events: none;
+}
+
+.bg-art__cluster {
+	position: absolute;
+	opacity: 0.9;
+	filter: blur(0.3px);
+}
+
+.bg-art__waves {
+	position: absolute;
+	top: 8%;
+	left: 8%;
+	width: 130%;
+	height: 62%;
+	overflow: visible;
+}
+
+.bg-art-root > main,
+.bg-art-root > section#Footer {
+	position: relative;
+	z-index: 1;
+}
+
+@media (max-width: 767.98px) {
+	.bg-art__cluster {
+		opacity: 0.7;
+	}
 }
 
 /*EMPHASYS TITLE*/
