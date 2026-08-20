@@ -2,15 +2,16 @@ import { Container, Row, Col, Image } from 'react-bootstrap';
 import avatar from '../img/avatar.png';
 function Intro() {
     return (
-        <section id="intro">
+        <section id="intro" className="section-spacing">
             <Container>
-                <Row>
-                    <Col md={6}>
-                        <Image src={avatar} className="intro__image" />
+                <Row className="align-items-center">
+                    <Col md={5} className="d-flex justify-content-center">
+                        <Image src={avatar} className="intro__image" roundedCircle />
                     </Col>
-                    <Col md={6} className='row flex-column align-items-center justify-content-center'>
-                        <h1 className="h1 text-light fs-1">Bem-vindo(a)! Meu nome é Cindy.</h1>
-                        <p className="lead text-light fs-6">Agradeço por visitar meu portfólio, um projeto que desenvolvi com a linguagem React com o intuito de aprimorar minhas habilidades, compartilhar meus conhecimentos e apresentar meus trabalhos e gostos. Espero que encontre aqui uma amostra do que sou capaz e das paixões que me impulsionam como desenvolvedora. Sinta-se à vontade!</p>
+                    <Col md={7}>
+                        <p className="intro__eyebrow">Technical SEO • Front-End Developer (SEO-driven)</p>
+                        <h1 className="intro__title">Bem-vindo(a)! Meu nome é Cindy.</h1>
+                        <p className="lead text-light">Profissional híbrida em SEO técnico, desenvolvimento front-end orientado à performance e automação de processos. Ao longo da carreira, evoluí do operacional ao estratégico, consolidando experiência em gestão de equipes e padronização de processos escaláveis. Aprendo rápido, executo com consistência e tenho alto senso de responsabilidade sobre cada entrega.</p>
                     </Col>
                 </Row>
             </Container>
