@@ -1,5 +1,5 @@
 import { Container, Row, Col, Image } from 'react-bootstrap';
-import avatar from '../img/avatar.png';
+import avatar from '../img/avatar.jpg';
 function Intro() {
     return (
         <section id="intro" className="section-spacing">
