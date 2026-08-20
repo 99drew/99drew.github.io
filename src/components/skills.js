@@ -1,6 +1,7 @@
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { Database, Bot, TrendingUp } from 'lucide-react';
 import SectionTitle from './sectionTitle.js';
+import { useLanguage } from '../i18n/LanguageContext.js';
 
 import html5 from '../img/icons/tech/html5.svg';
 import css3 from '../img/icons/tech/css3.svg';
@@ -21,42 +22,25 @@ import googleSearchConsole from '../img/icons/tech/google-search-console.svg';
 import semrush from '../img/icons/tech/semrush.svg';
 import lookerStudio from '../img/icons/tech/looker-studio.svg';
 
-const COMPETENCIES = [
-    {
-        title: 'SEO',
-        text: 'Arquitetura semântica, auditorias e execuções on-page, indexação e rastreabilidade, otimização de performance, criação de conteúdo, seleção de palavras-chave e estratégia de funis topic cluster. Aplico GEO e AEO para visibilidade em buscadores por IA e respostas diretas.',
-    },
-    {
-        title: 'Automação e Processos',
-        text: 'Automação de fluxos, webscrapers para validação e coleta de dados, e padronização de processos escaláveis (POPs).',
-    },
-    {
-        title: 'Front-end SEO-driven',
-        text: 'Desenvolvimento front-end com HTML, CSS, JavaScript e PHP, e SEO em sites WordPress.',
-    },
-    {
-        title: 'Inteligência Artificial Aplicada',
-        text: 'Manipulação e orquestração de agentes de IA aplicados a automação de processos, geração de conteúdo e otimização de fluxos de trabalho.',
-    },
-];
-
 // Tecnologias — logos reais (SVG, brancos) para as que têm marca própria;
 // ícone genérico só pra SQL (linguagem, não uma marca) e Agentes de IA (conceito).
-const TECHNOLOGIES = [
-    { name: 'HTML', src: html5 },
-    { name: 'CSS', src: css3 },
-    { name: 'JavaScript', src: javascript },
-    { name: 'PHP', src: php },
-    { name: 'SQL', Icon: Database },
-    { name: 'Python', src: python },
-    { name: 'WordPress', src: wordpress },
-    { name: 'Git', src: git },
-    { name: 'n8n', src: n8n },
-    { name: 'React', src: react },
-    { name: 'TypeScript', src: typescript },
-    { name: 'BEM', src: bem },
-    { name: 'Agentes de IA', Icon: Bot },
-];
+function getTechnologies(aiAgentsLabel) {
+    return [
+        { name: 'HTML', src: html5 },
+        { name: 'CSS', src: css3 },
+        { name: 'JavaScript', src: javascript },
+        { name: 'PHP', src: php },
+        { name: 'SQL', Icon: Database },
+        { name: 'Python', src: python },
+        { name: 'WordPress', src: wordpress },
+        { name: 'Git', src: git },
+        { name: 'n8n', src: n8n },
+        { name: 'React', src: react },
+        { name: 'TypeScript', src: typescript },
+        { name: 'BEM', src: bem },
+        { name: aiAgentsLabel, Icon: Bot },
+    ];
+}
 
 // Ferramentas — mesma lógica; Ahrefs não tem logo de marca disponível na
 // biblioteca de ícones usada, então recebe um ícone genérico em vez de um
@@ -86,13 +70,15 @@ function IconCard({ name, src, Icon }) {
 }
 
 function Skills() {
+    const { t, lang } = useLanguage();
+    const technologies = getTechnologies(lang === 'en' ? 'AI Agents' : 'Agentes de IA');
     return (
         <section id="Skills" className="section-spacing">
             <Container>
-                <SectionTitle>Skills</SectionTitle>
+                <SectionTitle>{t.skills.title}</SectionTitle>
 
                 <Row className="g-3 mb-4">
-                    {COMPETENCIES.map((c) => (
+                    {t.skills.competencies.map((c) => (
                         <Col key={c.title} md={6}>
                             <Card className="card card--panel h-100">
                                 <Card.Body>
@@ -104,17 +90,17 @@ function Skills() {
                     ))}
                 </Row>
 
-                <h3 className="skills__subtitle">Tecnologias</h3>
+                <h3 className="skills__subtitle">{t.skills.technologiesLabel}</h3>
                 <Row xs={2} sm={3} md={4} lg={6} className="g-3 mb-4">
-                    {TECHNOLOGIES.map((t) => (
-                        <Col key={t.name}><IconCard {...t} /></Col>
+                    {technologies.map((tech) => (
+                        <Col key={tech.name}><IconCard {...tech} /></Col>
                     ))}
                 </Row>
 
-                <h3 className="skills__subtitle">Ferramentas</h3>
+                <h3 className="skills__subtitle">{t.skills.toolsLabel}</h3>
                 <Row xs={2} sm={3} md={4} lg={6} className="g-3">
-                    {TOOLS.map((t) => (
-                        <Col key={t.name}><IconCard {...t} /></Col>
+                    {TOOLS.map((tool) => (
+                        <Col key={tool.name}><IconCard {...tool} /></Col>
                     ))}
                 </Row>
             </Container>
