@@ -38,8 +38,8 @@ body {
 
 .bg-art__cluster {
 	position: absolute;
-	opacity: 0.9;
-	filter: blur(0.3px);
+	/* opacity/blur por cluster vêm inline (backgroundArt.js) — cada um tem
+	   um tratamento diferente (glow atmosférico vs. acento nítido) */
 }
 
 .bg-art__waves {
@@ -57,11 +57,6 @@ body {
 	z-index: 1;
 }
 
-@media (max-width: 767.98px) {
-	.bg-art__cluster {
-		opacity: 0.7;
-	}
-}
 
 /*EMPHASYS TITLE*/
 .emp-title {

@@ -1,8 +1,19 @@
 // Recria em SVG/CSS o motivo decorativo do antigo bg-html.png (blobs em
 // gradiente rosa→roxo→azul + feixes de linhas onduladas), inteiramente
-// vetorial — sem depender de uma imagem rasterizada de fundo. Como agora é
-// gerado por código, dá pra espalhar o motivo por toda a extensão da página
-// (não só na primeira tela), em vez de ficar preso ao tamanho de uma imagem.
+// vetorial — sem depender de uma imagem rasterizada de fundo.
+//
+// Composição revisada: a primeira versão espalhava blobs do mesmo tamanho
+// em intervalos regulares descendo a página inteira, o que lia como um
+// padrão repetido (bolinha-bolinha-bolinha). Referências bem avaliadas de
+// mesh-gradient/hero background (ver pesquisa) convergem em: poucos blobs
+// grandes, bastante desfocados, empurrados pra fora da área de conteúdo
+// (sangrando pra fora da viewport), com variação forte de escala — em vez
+// de muitos blobs médios nítidos e igualmente espaçados. Aqui: só 2 "glows"
+// grandes e desfocados (que também carregam o feixe de linhas onduladas,
+// como bookend no topo e no rodapé — o único detalhe repetido, e só duas
+// vezes), 2 glows médios no meio da página pra continuidade, e 3 acentos
+// pequenos e nítidos pra pontuação — nada de ritmo mecânico, nem um em
+// cada seção.
 
 // PRNG determinístico (mesmo seed => mesmo blob sempre, sem re-render aleatório)
 function mulberry32(seed) {
@@ -42,7 +53,7 @@ function blobPath(seed, size = 200, points = 9, irregularity = 0.32) {
 }
 
 // Feixe de linhas onduladas concêntricas (o padrão "topográfico" fino e
-// branco que aparece sobre dois dos blobs na imagem original).
+// branco que aparece sobre os blobs de topo/rodapé na imagem original).
 function wavyLines(seed, count = 13, width = 480, height = 230) {
     const rand = mulberry32(seed);
     const lines = [];
@@ -65,27 +76,31 @@ function wavyLines(seed, count = 13, width = 480, height = 230) {
     return lines;
 }
 
-// left/top em %, size em px, rot em graus, gradiente invertido opcional, e
-// se carrega ou não o feixe de linhas onduladas junto.
+// Três variantes do mesmo trio de cores (rosa/roxo/azul, extraídas por
+// amostragem da imagem original) em ordens diferentes, pra cada glow ter
+// uma personalidade sem sair da paleta.
+const GRADIENTS = {
+    a: ['#FF5595', '#9A20C4', '#3C00FA'],
+    b: ['#3C00FA', '#9A20C4', '#FF5595'],
+    c: ['#9A20C4', '#3C00FA', '#FF5595'],
+};
+
+// left/top em %, size em px. blur em px (grande = glow atmosférico, baixo =
+// acento nítido). opacity controla o quão presente cada um é.
 const CLUSTERS = [
-    { seed: 1, size: 260, left: -8, top: 0, rot: -12, waves: true, waveSeed: 101 },
-    { seed: 2, size: 190, left: 88, top: 6, rot: 20, flip: true },
-    { seed: 3, size: 170, left: -6, top: 17, rot: 8 },
-    { seed: 4, size: 230, left: 90, top: 24, rot: -18, flip: true },
-    { seed: 5, size: 200, left: -7, top: 34, rot: 15 },
-    { seed: 6, size: 250, left: 86, top: 42, rot: 5, flip: true, waves: true, waveSeed: 202 },
-    { seed: 7, size: 180, left: -5, top: 52, rot: -10 },
-    { seed: 8, size: 210, left: 89, top: 60, rot: 22, flip: true },
-    { seed: 9, size: 240, left: -9, top: 70, rot: -6, waves: true, waveSeed: 303 },
-    { seed: 10, size: 190, left: 87, top: 79, rot: 14, flip: true },
-    { seed: 11, size: 220, left: -7, top: 88, rot: 10 },
-    { seed: 12, size: 270, left: 84, top: 94, rot: -15, flip: true, waves: true, waveSeed: 404 },
+    { seed: 1, size: 640, left: -22, top: -10, rot: -8, blur: 70, opacity: 0.55, grad: 'a', waves: true, waveSeed: 101 },
+    { seed: 2, size: 150, left: 80, top: 2, rot: 25, flip: true, blur: 6, opacity: 0.85, grad: 'b' },
+    { seed: 3, size: 560, left: 68, top: 44, rot: 10, flip: true, blur: 75, opacity: 0.45, grad: 'c' },
+    { seed: 4, size: 130, left: -5, top: 63, rot: -18, blur: 5, opacity: 0.8, grad: 'a' },
+    { seed: 5, size: 600, left: -20, top: 84, rot: -6, blur: 68, opacity: 0.55, grad: 'b', waves: true, waveSeed: 404 },
+    { seed: 6, size: 140, left: 85, top: 97, rot: 16, flip: true, blur: 6, opacity: 0.75, grad: 'c' },
 ];
 
 function BlobCluster({ cfg }) {
-    const { seed, size, left, top, rot, flip, waves, waveSeed } = cfg;
+    const { seed, size, left, top, rot, flip, waves, waveSeed, blur, opacity, grad } = cfg;
     const path = blobPath(seed, 200, 9, 0.32);
     const gradId = `blobGrad${seed}`;
+    const colors = GRADIENTS[grad];
     const lines = waves ? wavyLines(waveSeed, 13, 480, 230) : null;
     return (
         <div
@@ -95,15 +110,17 @@ function BlobCluster({ cfg }) {
                 top: `${top}%`,
                 width: size,
                 height: size,
+                opacity,
+                filter: `blur(${blur}px)`,
                 transform: `rotate(${rot}deg) scaleX(${flip ? -1 : 1})`,
             }}
         >
             <svg viewBox="0 0 400 400" width="100%" height="100%">
                 <defs>
                     <linearGradient id={gradId} x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stopColor="#FF5595" />
-                        <stop offset="45%" stopColor="#9A20C4" />
-                        <stop offset="100%" stopColor="#3C00FA" />
+                        <stop offset="0%" stopColor={colors[0]} />
+                        <stop offset="45%" stopColor={colors[1]} />
+                        <stop offset="100%" stopColor={colors[2]} />
                     </linearGradient>
                 </defs>
                 <path d={path} fill={`url(#${gradId})`} />
@@ -111,7 +128,7 @@ function BlobCluster({ cfg }) {
             {waves && (
                 <svg className="bg-art__waves" viewBox="0 0 480 230" preserveAspectRatio="xMidYMid meet">
                     {lines.map((d, i) => (
-                        <path key={i} d={d} fill="none" stroke="#ffffff" strokeWidth="1" strokeOpacity="0.35" />
+                        <path key={i} d={d} fill="none" stroke="#ffffff" strokeWidth="1" strokeOpacity="0.3" />
                     ))}
                 </svg>
             )}
