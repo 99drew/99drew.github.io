@@ -176,15 +176,24 @@ body {
 }
 
 #Skills .card--skills .card__picture {
-	width: 64px;
-	height: 64px;
+	width: 56px;
+	height: 56px;
 	object-fit: contain;
+}
+
+#Skills .card--skills .card__picture--icon {
+	color: #fff;
+	stroke-width: 1.4;
 }
 
 #Skills .card--skills .card__title {
 	text-align: center;
 	font-size: 0.95em;
 	color: #fff;
+}
+
+#Skills .skills__subtitle {
+	margin-top: 0.5rem;
 }
 
 /* ABOUT ME SECTION */
