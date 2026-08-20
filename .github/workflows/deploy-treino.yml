@@ -1,0 +1,33 @@
+name: deploy treino-app
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "treino-app/**"
+      - ".github/workflows/deploy-treino.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: treino-app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+      - name: Install
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Deploy to gh-pages (/treino)
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./treino-app/dist
+          destination_dir: treino
+          keep_files: true
