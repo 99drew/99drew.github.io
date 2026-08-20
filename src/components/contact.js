@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, ListGroup, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import emailjs from 'emailjs-com';
+import { WhatsappIcon, LinkedinIcon, MailIcon } from './brandIcons.js';
+import SectionTitle from './sectionTitle.js';
 
 const Contact = () => {
   const [validated, setValidated] = useState(false);
@@ -26,23 +28,25 @@ const Contact = () => {
   };
 
   return (
-    <section id="Contact">
-      <Container className="my-5">
-        <Row>
-          <Col md={4} className="d-flex flex-column align-items-center justify-content-center">
-            <ListGroup horizontal className="justify-content-center">
-              <ListGroup.Item as="a" target="_blank" href="https://web.whatsapp.com/send?phone=5511948521510&text=%5BACESSO%20PORTIF%C3%93LIO%5D">
-                <i className="fa-brands fa-6x fa-whatsapp"></i>
-              </ListGroup.Item>
-              <ListGroup.Item as="a" target="_blank" href="https://br.linkedin.com/in/cindy-santos-a717581b1">
-                <i className="fa-brands fa-6x fa-linkedin-in"></i>
-              </ListGroup.Item>
-            </ListGroup>
+    <section id="Contact" className="section-spacing">
+      <Container>
+        <SectionTitle>Contato</SectionTitle>
+        <Row className="g-4">
+          <Col md={4}>
+            <p className="text-light mb-4">São Paulo, Brasil — aberta a modelos híbrido, remoto ou presencial.</p>
+            <div className="contact-links">
+              <a className="contact-links__item" target="_blank" rel="noopener noreferrer" href="https://wa.me/5511989067348">
+                <WhatsappIcon /> <span>(11) 98906-7348</span>
+              </a>
+              <a className="contact-links__item" href="mailto:cindytauane@gmail.com">
+                <MailIcon /> <span>cindytauane@gmail.com</span>
+              </a>
+              <a className="contact-links__item" target="_blank" rel="noopener noreferrer" href="https://br.linkedin.com/in/cindy-santos-a717581b1">
+                <LinkedinIcon /> <span>LinkedIn</span>
+              </a>
+            </div>
           </Col>
           <Col md={8}>
-            <h2 className="emp-title">
-              <i className="fas fa-chevron-right"></i> <span>Contato</span>
-            </h2>
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
               <Form.Group>
                 <Form.Label className="text-light">Nome</Form.Label>

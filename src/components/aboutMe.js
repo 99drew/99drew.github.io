@@ -1,13 +1,14 @@
 import { Container, Row, Col, Card, Image } from 'react-bootstrap';
 import illustration from '../img/illustrations/coffee-person.svg';
+import SectionTitle from './sectionTitle.js';
 function AboutMe() {
     return (
-        <section id="AboutMe">
-            <Container className="mt-5">
-                <Row>
+        <section id="AboutMe" className="section-spacing">
+            <Container>
+                <Row className="align-items-center g-4">
                     <Col md={8}>
-                        <h2 className="emp-title"> <i className="fas fa-chevron-right"></i> <span>Sobre Mim</span></h2>
-                        <p className="text-light">Desde muito jovem, sou uma sonhadora, almejando alcançar lugares aparentemente inalcançáveis. Minha inspiração vem de observar aqueles que já atingiram o nível que desejo, vivendo a realidade que tanto aspiro. Desde minha juventude, sempre admirei pessoas talentosas no universo tecnológico e me dediquei a estudar para um dia fazer parte desse campo promissor. Hoje, aos 25 anos, atuo como desenvolvedora Front-End e lidero uma equipe há quatro anos, apaixonada pelo que faço e sempre empenhada em entregar o melhor resultado! Além do mundo dos códigos, minhas paixões incluem assistir animes (sou uma grande fã de Naruto!) e explorar lugares que me proporcionem experiências incríveis e inesquecíveis. Para complementar esta introdução, gostaria de destacar uma das frases do meu livro favorito, "O Monge e o Executivo":</p>
+                        <SectionTitle>Sobre Mim</SectionTitle>
+                        <p className="text-light">Desde muito jovem, sou uma sonhadora, almejando alcançar lugares aparentemente inalcançáveis. Sempre admirei pessoas talentosas no universo tecnológico e me dediquei a estudar para um dia fazer parte desse campo promissor. Comecei como desenvolvedora Front-End e, com o tempo, fui evoluindo do operacional ao estratégico: hoje atuo de forma híbrida entre SEO técnico, front-end orientado a performance e automação de processos, liderando pessoas e padronizando fluxos de trabalho. Além do mundo dos códigos e das buscas, minhas paixões incluem assistir animes (sou uma grande fã de Naruto!) e explorar lugares que me proporcionem experiências incríveis e inesquecíveis. Para complementar esta introdução, gostaria de destacar uma frase do meu livro favorito, "O Monge e o Executivo":</p>
                         <Card className="card__quote">
                             <Card.Body>
                                 <blockquote className="blockquote">
@@ -23,9 +24,8 @@ function AboutMe() {
                         </Card>
                         <p className="text-light">Esta citação reflete a essência do que acredito e pratico em minha vida profissional e pessoal.</p>
                     </Col>
-                    <Col md={4}>
-                        <Image width="500" src={illustration} />
-                        {/* <p className="fw-bold text-light text-end">Bônus: Sou apaixonada por Café!</p> */}
+                    <Col md={4} className="d-none d-md-block text-center">
+                        <Image fluid src={illustration} className="aboutme__illustration" />
                     </Col>
                 </Row>
             </Container>
