@@ -1,35 +1,25 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import SectionTitle from './sectionTitle.js';
-
-const TARGET_ROLES = [
-    'SEO',
-    'Desenvolvimento Front-end com ou sem WordPress',
-    'Automação de processos e fluxos',
-];
-
-const EDUCATION = [
-    { course: 'Curso Técnico em Informática', school: 'ETEC' },
-    { course: 'Curso de HTML, CSS e JS', school: 'Udemy' },
-    { course: 'Análise e Desenvolvimento de Sistemas', school: 'Cursando' },
-];
+import { useLanguage } from '../i18n/LanguageContext.js';
 
 function ObjectiveEducation() {
+    const { t } = useLanguage();
     return (
         <section id="Objective" className="section-spacing">
             <Container>
                 <Row className="g-4">
                     <Col md={7}>
-                        <SectionTitle>Objetivo Profissional</SectionTitle>
-                        <p className="text-light">Busco atuar de forma operacional e estratégica em:</p>
+                        <SectionTitle>{t.objective.title}</SectionTitle>
+                        <p className="text-light">{t.objective.intro}</p>
                         <div className="pill-list mb-3">
-                            {TARGET_ROLES.map((role) => <span key={role} className="pill pill--accent">{role}</span>)}
+                            {t.objective.roles.map((role) => <span key={role} className="pill pill--accent">{role}</span>)}
                         </div>
-                        <p className="text-light">Sem restrições de modelo (híbrido, remoto ou presencial), aberta a empresas de qualquer porte.</p>
+                        <p className="text-light">{t.objective.closing}</p>
                     </Col>
                     <Col md={5}>
-                        <h3 className="skills__subtitle">Formação</h3>
+                        <h3 className="skills__subtitle">{t.objective.educationTitle}</h3>
                         <ul className="education-list">
-                            {EDUCATION.map((e) => (
+                            {t.objective.education.map((e) => (
                                 <li key={e.course}>
                                     <span className="education-list__course">{e.course}</span>
                                     <span className="education-list__school"> — {e.school}</span>

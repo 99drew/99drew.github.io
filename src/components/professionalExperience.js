@@ -1,54 +1,19 @@
 import { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import SectionTitle from './sectionTitle.js';
-
-const ROLES = [
-    {
-        key: 'seo-coord',
-        title: 'Coordenadora — SEO',
-        company: 'Grupo Ideal Trends',
-        period: '2024 — Atual',
-        bullets: [
-            'Condução de análises técnicas completas (estrutura, semântica, performance) e implementação direta de melhorias SEO on-page.',
-            'Definição de estratégias de conteúdo baseadas em intenção de busca, com CRO orientado a comportamento (Clarity) e monitoramento contínuo via GA4, GSC e Semrush.',
-            'Aplicação de GEO e AEO para otimizar presença da marca em buscadores por IA e mecanismos de resposta direta.',
-            'Criação e manutenção de fluxos automatizados para gestão de leads e otimização operacional.',
-        ],
-    },
-    {
-        key: 'frontend-design',
-        title: 'Supervisora — Front-end & Design',
-        company: 'Doutores da Web / Busca Cliente',
-        period: '2022 — 2024',
-        bullets: [
-            'Gestão técnica das equipes de Front-End e Design, com foco em SEO, qualidade e eficiência operacional.',
-            'Padronização e escalabilidade dos processos por meio de POPs, dashboards com KPIs e repositório de componentes.',
-            'Automação de fluxos críticos (n8n + Runrun.it), scripts de dados e agente em Python para operações de alto volume.',
-        ],
-    },
-    {
-        key: 'frontend-dev',
-        title: 'Desenvolvedora — Front-end',
-        company: 'Doutores da Web',
-        period: '2020 — 2022',
-        bullets: [
-            'Desenvolvimento de sites personalizados no Site Base MPI (HTML, PHP, JS) com foco em performance e SEO.',
-            'Criação de componentes reutilizáveis e otimização contínua da base de código para acelerar entregas.',
-            'Participação em webscrapper de validação técnica e uso avançado de Bitbucket, Git e métodos ágeis.',
-            'Apoio e treinamentos para a equipe.',
-        ],
-    },
-];
+import { useLanguage } from '../i18n/LanguageContext.js';
 
 function ProfessionalExperience() {
-    const [openKey, setOpenKey] = useState(ROLES[0].key);
+    const { t } = useLanguage();
+    const roles = t.experience.roles;
+    const [openKey, setOpenKey] = useState(roles[0].key);
 
     return (
         <section id="ProfessionalExperience" className="section-spacing">
             <Container>
-                <SectionTitle>Experiência Profissional</SectionTitle>
+                <SectionTitle>{t.experience.title}</SectionTitle>
                 <div className="timeline">
-                    {ROLES.map((role) => {
+                    {roles.map((role) => {
                         const isOpen = openKey === role.key;
                         return (
                             <div key={role.key} className={`timeline__item${isOpen ? ' timeline__item--open' : ''}`}>

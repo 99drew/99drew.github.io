@@ -162,6 +162,27 @@ body {
 	background: linear-gradient(to bottom, rgba(6, 2, 57, 0.85), transparent);
 }
 
+.lang-toggle {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	margin-left: 8px;
+	background: var(--panel-bg);
+	border: 1px solid var(--panel-border);
+	color: #fff;
+	border-radius: 999px;
+	padding: 5px 12px;
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	cursor: pointer;
+}
+
+.lang-toggle:hover {
+	border-color: var(--accent);
+	color: var(--accent);
+}
+
 /* INTRO SECTION */
 #intro .intro__image {
 	width: 100%;
@@ -185,6 +206,28 @@ body {
 	font-size: 2.5rem;
 	font-weight: 700;
 	margin-bottom: 1rem;
+}
+
+#intro .intro__availability {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin-top: 1.1rem;
+	padding: 7px 14px;
+	background: var(--good-soft, rgba(30, 142, 90, 0.14));
+	border: 1px solid rgba(30, 142, 90, 0.4);
+	border-radius: 999px;
+	color: #7CE0AC;
+	font-size: 0.85rem;
+	font-weight: 600;
+}
+
+#intro .intro__availability-dot {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #4ECB8E;
+	flex-shrink: 0;
 }
 
 /* SKILLS SECTION */
@@ -335,6 +378,15 @@ body {
 
 .contact-links__item:hover {
 	color: var(--accent);
+}
+
+/* honeypot anti-spam: fora da tela pra humanos, mas presente no DOM pra bots */
+.contact-honeypot {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
 }
 
 #Contact .form-control {
