@@ -1,13 +1,25 @@
 import { Container, Row, Col, Card } from 'react-bootstrap';
-import html from '../img/icons/html.png';
-import css from '../img/icons/css.png';
-import js from '../img/icons/js.png';
-import ts from '../img/icons/ts.png';
-import react from '../img/icons/react.png';
-import php from '../img/icons/php.png';
-import git from '../img/icons/git.png';
-import bem from '../img/icons/bem.png';
+import { Database, Bot, TrendingUp } from 'lucide-react';
 import SectionTitle from './sectionTitle.js';
+
+import html5 from '../img/icons/tech/html5.svg';
+import css3 from '../img/icons/tech/css3.svg';
+import javascript from '../img/icons/tech/javascript.svg';
+import php from '../img/icons/tech/php.svg';
+import python from '../img/icons/tech/python.svg';
+import wordpress from '../img/icons/tech/wordpress.svg';
+import git from '../img/icons/tech/git.svg';
+import n8n from '../img/icons/tech/n8n.svg';
+import react from '../img/icons/tech/react.svg';
+import typescript from '../img/icons/tech/typescript.svg';
+import bem from '../img/icons/tech/bem.svg';
+import bitbucket from '../img/icons/tech/bitbucket.svg';
+import jira from '../img/icons/tech/jira.svg';
+import runrunit from '../img/icons/tech/runrunit.svg';
+import googleAnalytics from '../img/icons/tech/google-analytics.svg';
+import googleSearchConsole from '../img/icons/tech/google-search-console.svg';
+import semrush from '../img/icons/tech/semrush.svg';
+import lookerStudio from '../img/icons/tech/looker-studio.svg';
 
 const COMPETENCIES = [
     {
@@ -28,19 +40,50 @@ const COMPETENCIES = [
     },
 ];
 
-const TECH_ICONS = [
-    { src: html, alt: 'HTML 5', title: 'HTML 5' },
-    { src: css, alt: 'CSS 3', title: 'CSS 3' },
-    { src: js, alt: 'JavaScript', title: 'JavaScript' },
-    { src: php, alt: 'PHP', title: 'PHP' },
-    { src: react, alt: 'React', title: 'React' },
-    { src: ts, alt: 'TypeScript', title: 'TypeScript' },
-    { src: git, alt: 'Git', title: 'GIT' },
-    { src: bem, alt: 'BEM (Block, Element, Modifier)', title: 'BEM' },
+// Tecnologias — logos reais (SVG, brancos) para as que têm marca própria;
+// ícone genérico só pra SQL (linguagem, não uma marca) e Agentes de IA (conceito).
+const TECHNOLOGIES = [
+    { name: 'HTML', src: html5 },
+    { name: 'CSS', src: css3 },
+    { name: 'JavaScript', src: javascript },
+    { name: 'PHP', src: php },
+    { name: 'SQL', Icon: Database },
+    { name: 'Python', src: python },
+    { name: 'WordPress', src: wordpress },
+    { name: 'Git', src: git },
+    { name: 'n8n', src: n8n },
+    { name: 'React', src: react },
+    { name: 'TypeScript', src: typescript },
+    { name: 'BEM', src: bem },
+    { name: 'Agentes de IA', Icon: Bot },
 ];
 
-const TECHNOLOGIES = ['HTML', 'CSS', 'JS', 'PHP', 'SQL', 'Python', 'WordPress', 'Git', 'n8n', 'Agentes de IA'];
-const TOOLS = ['Bitbucket', 'Jira', 'Runrun.it', 'Google Analytics', 'Google Search Console', 'Semrush', 'Ahrefs', 'Looker Studio'];
+// Ferramentas — mesma lógica; Ahrefs não tem logo de marca disponível na
+// biblioteca de ícones usada, então recebe um ícone genérico em vez de um
+// logo de outra marca.
+const TOOLS = [
+    { name: 'Bitbucket', src: bitbucket },
+    { name: 'Jira', src: jira },
+    { name: 'Runrun.it', src: runrunit },
+    { name: 'Google Analytics', src: googleAnalytics },
+    { name: 'Google Search Console', src: googleSearchConsole },
+    { name: 'Semrush', src: semrush },
+    { name: 'Ahrefs', Icon: TrendingUp },
+    { name: 'Looker Studio', src: lookerStudio },
+];
+
+function IconCard({ name, src, Icon }) {
+    return (
+        <Card className="card card--skills h-100">
+            {src ? (
+                <Card.Img className="card__picture" src={src} alt={name} title={name} />
+            ) : (
+                <Icon className="card__picture card__picture--icon" aria-hidden="true" />
+            )}
+            <Card.Title className="card__title">{name}</Card.Title>
+        </Card>
+    );
+}
 
 function Skills() {
     return (
@@ -61,30 +104,18 @@ function Skills() {
                     ))}
                 </Row>
 
-                <Row xs={2} sm={3} md={4} lg={8} className="g-3 mb-4">
-                    {TECH_ICONS.map((icon) => (
-                        <Col key={icon.title}>
-                            <Card className="card card--skills h-100">
-                                <Card.Img className="card__picture" src={icon.src} alt={icon.alt} title={icon.title} />
-                                <Card.Title className="card__title">{icon.title}</Card.Title>
-                            </Card>
-                        </Col>
+                <h3 className="skills__subtitle">Tecnologias</h3>
+                <Row xs={2} sm={3} md={4} lg={6} className="g-3 mb-4">
+                    {TECHNOLOGIES.map((t) => (
+                        <Col key={t.name}><IconCard {...t} /></Col>
                     ))}
                 </Row>
 
-                <Row className="g-3">
-                    <Col md={6}>
-                        <h3 className="skills__subtitle">Tecnologias</h3>
-                        <div className="pill-list">
-                            {TECHNOLOGIES.map((t) => <span key={t} className="pill">{t}</span>)}
-                        </div>
-                    </Col>
-                    <Col md={6}>
-                        <h3 className="skills__subtitle">Ferramentas</h3>
-                        <div className="pill-list">
-                            {TOOLS.map((t) => <span key={t} className="pill">{t}</span>)}
-                        </div>
-                    </Col>
+                <h3 className="skills__subtitle">Ferramentas</h3>
+                <Row xs={2} sm={3} md={4} lg={6} className="g-3">
+                    {TOOLS.map((t) => (
+                        <Col key={t.name}><IconCard {...t} /></Col>
+                    ))}
                 </Row>
             </Container>
         </section>
