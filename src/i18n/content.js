@@ -11,10 +11,7 @@ export const content = {
         aboutMe: {
             title: 'Sobre Mim',
             positioning: 'Comecei como desenvolvedora Front-End e, com o tempo, fui evoluindo do operacional ao estratégico: hoje atuo de forma híbrida entre SEO técnico, front-end orientado a performance e automação de processos, liderando pessoas e padronizando fluxos de trabalho.',
-            body: 'Desde muito jovem, sou uma sonhadora, almejando alcançar lugares aparentemente inalcançáveis. Sempre admirei pessoas talentosas no universo tecnológico e me dediquei a estudar para um dia fazer parte desse campo promissor. Além do mundo dos códigos e das buscas, minhas paixões incluem assistir animes (sou uma grande fã de Naruto!) e explorar lugares que me proporcionem experiências incríveis e inesquecíveis. Para complementar esta introdução, gostaria de destacar uma frase do meu livro favorito, "O Monge e o Executivo":',
-            quote: '"Pensamentos tornam-se ações, ações tornam-se hábitos tornam-se caráter, e nosso caráter torna-se nosso destino."',
-            quoteAuthor: 'O Monge e o Executivo',
-            closing: 'Esta citação reflete a essência do que acredito e pratico em minha vida profissional e pessoal.',
+            body: 'Desde muito jovem, sou uma sonhadora, almejando alcançar lugares aparentemente inalcançáveis. Sempre admirei pessoas talentosas no universo tecnológico e me dediquei a estudar para um dia fazer parte desse campo promissor. Além do mundo dos códigos e das buscas, minhas paixões incluem assistir animes (sou uma grande fã de Naruto!) e explorar lugares que me proporcionem experiências incríveis e inesquecíveis.',
         },
         skills: {
             title: 'Skills',
@@ -112,11 +109,6 @@ export const content = {
         contact: {
             title: 'Contato',
             location: 'São Paulo, Brasil — aberta a modelos híbrido, remoto ou presencial.',
-            formName: 'Nome',
-            formMessage: 'Mensagem',
-            send: 'Enviar',
-            sentSuccess: 'Mensagem enviada com sucesso!',
-            sentError: 'Erro ao enviar a mensagem, tente novamente.',
             downloadCV: 'Baixar currículo',
             github: 'GitHub',
         },
@@ -134,10 +126,7 @@ export const content = {
         aboutMe: {
             title: 'About Me',
             positioning: 'I started as a Front-End developer and, over time, evolved from hands-on execution to strategy: today I work at the intersection of technical SEO, performance-driven front-end, and process automation — leading people and standardizing workflows.',
-            body: 'I\'ve been a dreamer since I was young, always reaching for places that seemed out of reach. I\'ve always admired talented people in tech and dedicated myself to studying so I could one day be part of this promising field. Beyond code and search, my passions include watching anime (I\'m a huge Naruto fan!) and exploring places that give me incredible, unforgettable experiences. To wrap up this introduction, I\'d like to share a line from my favorite book, "The Monk Who Sold His Ferrari":',
-            quote: '"Thoughts become actions, actions become habits, habits become character, and our character becomes our destiny."',
-            quoteAuthor: 'The Monk Who Sold His Ferrari',
-            closing: 'This quote reflects the essence of what I believe in and practice in both my professional and personal life.',
+            body: 'I\'ve been a dreamer since I was young, always reaching for places that seemed out of reach. I\'ve always admired talented people in tech and dedicated myself to studying so I could one day be part of this promising field. Beyond code and search, my passions include watching anime (I\'m a huge Naruto fan!) and exploring places that give me incredible, unforgettable experiences.',
         },
         skills: {
             title: 'Skills',
@@ -235,11 +224,6 @@ export const content = {
         contact: {
             title: 'Contact',
             location: 'São Paulo, Brazil — open to hybrid, remote, or on-site work.',
-            formName: 'Name',
-            formMessage: 'Message',
-            send: 'Send',
-            sentSuccess: 'Message sent successfully!',
-            sentError: 'Failed to send message, please try again.',
             downloadCV: 'Download résumé',
             github: 'GitHub',
         },
