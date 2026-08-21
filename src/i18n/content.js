@@ -105,6 +105,7 @@ export const content = {
                 { course: 'Curso Técnico em Informática', school: 'ETEC' },
                 { course: 'Curso de HTML, CSS e JS', school: 'Udemy' },
                 { course: 'Análise e Desenvolvimento de Sistemas', school: 'Cursando' },
+                { course: 'Curso Intensivo de SEO (Brian Dean) — Certificado', school: 'Semrush Academy' },
             ],
         },
         contact: {
@@ -226,6 +227,7 @@ export const content = {
                 { course: 'Technical Course in Information Technology', school: 'ETEC' },
                 { course: 'HTML, CSS & JS Course', school: 'Udemy' },
                 { course: 'Systems Analysis and Development', school: 'In progress' },
+                { course: 'SEO Intensive Course (Brian Dean) — Certified', school: 'Semrush Academy' },
             ],
         },
         contact: {
