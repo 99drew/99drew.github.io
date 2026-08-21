@@ -1,11 +1,12 @@
 import { ChevronRight } from 'lucide-react';
+import Reveal from './Reveal.js';
 
 function SectionTitle({ children }) {
     return (
-        <h2 className="emp-title">
+        <Reveal as="h2" variant="left" className="emp-title">
             <ChevronRight aria-hidden="true" />
             <span>{children}</span>
-        </h2>
+        </Reveal>
     );
 }
 

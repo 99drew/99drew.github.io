@@ -1,6 +1,7 @@
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import { Database, Bot, TrendingUp } from 'lucide-react';
 import SectionTitle from './sectionTitle.js';
+import Reveal from './Reveal.js';
 import { useLanguage } from '../i18n/LanguageContext.js';
 
 import html5 from '../img/icons/tech/html5.svg';
@@ -58,7 +59,7 @@ const TOOLS = [
 
 function IconCard({ name, src, Icon }) {
     return (
-        <Card className="card card--skills h-100">
+        <Card className="card card--skills card--hoverable h-100">
             {src ? (
                 <Card.Img className="card__picture" src={src} alt={name} title={name} />
             ) : (
@@ -78,29 +79,35 @@ function Skills() {
                 <SectionTitle>{t.skills.title}</SectionTitle>
 
                 <Row className="g-3 mb-4">
-                    {t.skills.competencies.map((c) => (
+                    {t.skills.competencies.map((c, idx) => (
                         <Col key={c.title} md={6}>
-                            <Card className="card card--panel h-100">
-                                <Card.Body>
-                                    <Card.Title className="card--panel__title">{c.title}</Card.Title>
-                                    <Card.Text className="text-light">{c.text}</Card.Text>
-                                </Card.Body>
-                            </Card>
+                            <Reveal delay={idx * 60}>
+                                <Card className="card card--panel card--hoverable h-100">
+                                    <Card.Body>
+                                        <Card.Title className="card--panel__title">{c.title}</Card.Title>
+                                        <Card.Text className="text-light">{c.text}</Card.Text>
+                                    </Card.Body>
+                                </Card>
+                            </Reveal>
                         </Col>
                     ))}
                 </Row>
 
                 <h3 className="skills__subtitle">{t.skills.technologiesLabel}</h3>
                 <Row xs={2} sm={3} md={4} lg={6} className="g-3 mb-4">
-                    {technologies.map((tech) => (
-                        <Col key={tech.name}><IconCard {...tech} /></Col>
+                    {technologies.map((tech, idx) => (
+                        <Col key={tech.name}>
+                            <Reveal variant="scale" delay={(idx % 6) * 45}><IconCard {...tech} /></Reveal>
+                        </Col>
                     ))}
                 </Row>
 
                 <h3 className="skills__subtitle">{t.skills.toolsLabel}</h3>
                 <Row xs={2} sm={3} md={4} lg={6} className="g-3">
-                    {TOOLS.map((tool) => (
-                        <Col key={tool.name}><IconCard {...tool} /></Col>
+                    {TOOLS.map((tool, idx) => (
+                        <Col key={tool.name}>
+                            <Reveal variant="scale" delay={(idx % 6) * 45}><IconCard {...tool} /></Reveal>
+                        </Col>
                     ))}
                 </Row>
             </Container>

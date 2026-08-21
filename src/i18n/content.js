@@ -3,6 +3,7 @@ export const content = {
         nav: { about: 'Sobre Mim', skills: 'Habilidades', experience: 'Experiência', projects: 'Projetos', contact: 'Contato' },
         intro: {
             eyebrow: 'Technical SEO • Front-End Developer (SEO-driven)',
+            roles: ['SEO Técnico', 'Front-End Developer', 'Automação de Processos'],
             title: 'Bem-vindo(a)! Meu nome é Cindy.',
             availability: 'Disponível para novas oportunidades — híbrido, remoto ou presencial',
             lead: 'Profissional híbrida em SEO técnico e front-end orientado à performance. Evoluí do operacional ao estratégico, e hoje lidero pessoas e padronizo processos escaláveis.',
@@ -105,6 +106,7 @@ export const content = {
                 { course: 'Curso Técnico em Informática', school: 'ETEC' },
                 { course: 'Curso de HTML, CSS e JS', school: 'Udemy' },
                 { course: 'Análise e Desenvolvimento de Sistemas', school: 'Cursando' },
+                { course: 'Curso Intensivo de SEO (Brian Dean) — Certificado', school: 'Semrush Academy' },
             ],
         },
         contact: {
@@ -124,6 +126,7 @@ export const content = {
         nav: { about: 'About Me', skills: 'Skills', experience: 'Experience', projects: 'Projects', contact: 'Contact' },
         intro: {
             eyebrow: 'Technical SEO • Front-End Developer (SEO-driven)',
+            roles: ['Technical SEO', 'Front-End Developer', 'Process Automation'],
             title: 'Welcome! My name is Cindy.',
             availability: 'Open to new opportunities — hybrid, remote, or on-site',
             lead: 'A hybrid professional in technical SEO and performance-driven front-end development. I evolved from hands-on execution to strategy, and now lead people and standardize scalable processes.',
@@ -226,6 +229,7 @@ export const content = {
                 { course: 'Technical Course in Information Technology', school: 'ETEC' },
                 { course: 'HTML, CSS & JS Course', school: 'Udemy' },
                 { course: 'Systems Analysis and Development', school: 'In progress' },
+                { course: 'SEO Intensive Course (Brian Dean) — Certified', school: 'Semrush Academy' },
             ],
         },
         contact: {
