@@ -402,6 +402,136 @@ body {
 	box-shadow: 0 0 0 0.2rem rgba(230, 75, 160, 0.25);
 }
 
+/* ANIMATIONS — scroll-reveal, hover micro-interactions, typewriter do hero.
+   Tudo desliga com prefers-reduced-motion: reduce (acessibilidade). */
+.reveal {
+	opacity: 0;
+	transition: opacity 0.7s cubic-bezier(.22, .61, .36, 1), transform 0.7s cubic-bezier(.22, .61, .36, 1);
+	will-change: opacity, transform;
+}
+.reveal--up { transform: translateY(28px); }
+.reveal--left { transform: translateX(-32px); }
+.reveal--right { transform: translateX(32px); }
+.reveal--scale { transform: scale(0.88); }
+
+.reveal--visible {
+	opacity: 1;
+	transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.reveal {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+}
+
+/* HOVER — cards que reagem ao mouse (skills, works) */
+.card--hoverable {
+	transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.card--hoverable:hover,
+.card--hoverable:focus-within {
+	transform: translateY(-6px);
+	box-shadow: 0 14px 32px rgba(0, 0, 0, 0.3);
+	border-color: rgba(230, 75, 160, 0.5);
+}
+
+#Skills .card--skills.card--hoverable:hover .card__picture {
+	transform: scale(1.12);
+}
+#Skills .card__picture {
+	transition: transform 0.25s ease;
+}
+
+/* HOVER — links de navegação com sublinhado animado */
+.site-navbar .nav-link {
+	position: relative;
+	transition: color 0.2s ease;
+}
+.site-navbar .nav-link::after {
+	content: '';
+	position: absolute;
+	left: 0.5rem;
+	right: 0.5rem;
+	bottom: 0.1rem;
+	height: 2px;
+	background: var(--accent);
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform 0.25s ease;
+}
+.site-navbar .nav-link:hover {
+	color: #fff !important;
+}
+.site-navbar .nav-link:hover::after {
+	transform: scaleX(1);
+}
+
+/* HOVER — botões e pills ganham leve destaque, não só a cor padrão do Bootstrap */
+.btn {
+	transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.btn:hover {
+	transform: translateY(-2px);
+}
+
+.pill {
+	transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.pill--accent:hover {
+	transform: translateY(-2px);
+	border-color: var(--accent);
+}
+
+.contact-links__item {
+	transition: color 0.2s ease, transform 0.2s ease;
+}
+.contact-links__item:hover {
+	transform: translateX(4px);
+}
+
+/* TIMELINE — marcador com pulso suave enquanto o item está aberto */
+.timeline__marker {
+	transition: transform 0.2s ease;
+}
+.timeline__item--open .timeline__marker {
+	animation: timeline-pulse 1.6s ease-in-out infinite;
+}
+@keyframes timeline-pulse {
+	0%, 100% { box-shadow: 0 0 0 0 rgba(230, 75, 160, 0.55); }
+	50% { box-shadow: 0 0 0 6px rgba(230, 75, 160, 0); }
+}
+@media (prefers-reduced-motion: reduce) {
+	.timeline__item--open .timeline__marker { animation: none; }
+}
+
+/* TYPEWRITER — linha de "roles" que gira no hero */
+#intro .intro__role {
+	color: #fff;
+	font-size: 1.15rem;
+	font-weight: 600;
+	margin-bottom: 0.75rem;
+	min-height: 1.5em;
+}
+.typewriter__cursor {
+	display: inline-block;
+	width: 2px;
+	height: 1em;
+	margin-left: 2px;
+	background: var(--accent);
+	vertical-align: -0.15em;
+	animation: cursor-blink 0.9s step-end infinite;
+}
+@keyframes cursor-blink {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+	.typewriter__cursor { animation: none; }
+}
+
 /* RESPONSIVE */
 @media (max-width: 767.98px) {
 	:root {

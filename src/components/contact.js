@@ -4,6 +4,7 @@ import emailjs from '@emailjs/browser';
 import { Download } from 'lucide-react';
 import { WhatsappIcon, LinkedinIcon, MailIcon, GithubIcon } from './brandIcons.js';
 import SectionTitle from './sectionTitle.js';
+import Reveal from './Reveal.js';
 import { useLanguage } from '../i18n/LanguageContext.js';
 
 const Contact = () => {
@@ -41,27 +42,32 @@ const Contact = () => {
         <SectionTitle>{t.contact.title}</SectionTitle>
         <Row className="g-4">
           <Col md={4}>
-            <p className="text-light mb-4">{t.contact.location}</p>
+            <Reveal as="p" className="text-light mb-4">{t.contact.location}</Reveal>
             <div className="contact-links">
-              <a className="contact-links__item" target="_blank" rel="noopener noreferrer" href="https://wa.me/5511989067348">
-                <WhatsappIcon /> <span>(11) 98906-7348</span>
-              </a>
-              <a className="contact-links__item" href="mailto:cindytauane@gmail.com">
-                <MailIcon /> <span>cindytauane@gmail.com</span>
-              </a>
-              <a className="contact-links__item" target="_blank" rel="noopener noreferrer" href="https://br.linkedin.com/in/cindy-santos-a717581b1">
-                <LinkedinIcon /> <span>LinkedIn</span>
-              </a>
-              <a className="contact-links__item" target="_blank" rel="noopener noreferrer" href="https://github.com/99drew">
-                <GithubIcon size={20} /> <span>{t.contact.github}</span>
-              </a>
-              <a className="contact-links__item" href="/CV-Cindy-Santos.pdf" target="_blank" rel="noopener noreferrer">
-                <Download size={20} /> <span>{t.contact.downloadCV}</span>
-              </a>
+              {[
+                { href: 'https://wa.me/5511989067348', icon: <WhatsappIcon />, label: '(11) 98906-7348', blank: true },
+                { href: 'mailto:cindytauane@gmail.com', icon: <MailIcon />, label: 'cindytauane@gmail.com', blank: false },
+                { href: 'https://br.linkedin.com/in/cindy-santos-a717581b1', icon: <LinkedinIcon />, label: 'LinkedIn', blank: true },
+                { href: 'https://github.com/99drew', icon: <GithubIcon size={20} />, label: t.contact.github, blank: true },
+                { href: '/CV-Cindy-Santos.pdf', icon: <Download size={20} />, label: t.contact.downloadCV, blank: true },
+              ].map((item, idx) => (
+                <Reveal
+                  key={item.label}
+                  as="a"
+                  variant="left"
+                  delay={idx * 60}
+                  className="contact-links__item"
+                  href={item.href}
+                  target={item.blank ? '_blank' : undefined}
+                  rel={item.blank ? 'noopener noreferrer' : undefined}
+                >
+                  {item.icon} <span>{item.label}</span>
+                </Reveal>
+              ))}
             </div>
           </Col>
           <Col md={8}>
-            <Form noValidate validated={validated} onSubmit={handleSubmit}>
+            <Reveal variant="right" delay={80} as={Form} noValidate validated={validated} onSubmit={handleSubmit}>
               <Form.Group controlId="from_name">
                 <Form.Label className="text-light">{t.contact.formName}</Form.Label>
                 <Form.Control className="mb-3" type="text" placeholder="Jane Doe" name="from_name" required />
@@ -76,7 +82,7 @@ const Contact = () => {
                 <Form.Control type="text" name="company_website" tabIndex="-1" autoComplete="off" />
               </Form.Group>
               <Button variant="light" type="submit">{t.contact.send}</Button>
-            </Form>
+            </Reveal>
           </Col>
         </Row>
       </Container>

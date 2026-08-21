@@ -31,6 +31,8 @@ const result = await new PurgeCSS().purge({
       /^was-validated$/, /^is-valid$/, /^is-invalid$/, // form validation
       /^offcanvas/, /^modal/, /^dropdown/, // react-bootstrap components used elsewhere
       "visually-hidden",
+      /^reveal/, // Reveal.js monta "reveal--" + variant via template literal
+
     ],
   },
 });

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Container } from 'react-bootstrap';
 import SectionTitle from './sectionTitle.js';
+import Reveal from './Reveal.js';
 import { useLanguage } from '../i18n/LanguageContext.js';
 
 function ProfessionalExperience() {
@@ -13,10 +14,16 @@ function ProfessionalExperience() {
             <Container>
                 <SectionTitle>{t.experience.title}</SectionTitle>
                 <div className="timeline">
-                    {roles.map((role) => {
+                    {roles.map((role, idx) => {
                         const isOpen = openKey === role.key;
                         return (
-                            <div key={role.key} className={`timeline__item${isOpen ? ' timeline__item--open' : ''}`}>
+                            <Reveal
+                                key={role.key}
+                                as="div"
+                                variant={idx % 2 === 0 ? 'left' : 'right'}
+                                delay={idx * 100}
+                                className={`timeline__item${isOpen ? ' timeline__item--open' : ''}`}
+                            >
                                 <button
                                     type="button"
                                     className="timeline__header"
@@ -36,7 +43,7 @@ function ProfessionalExperience() {
                                         {role.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
                                     </ul>
                                 )}
-                            </div>
+                            </Reveal>
                         );
                     })}
                 </div>
