@@ -60,11 +60,13 @@ const TOOLS = [
 function IconCard({ name, src, Icon }) {
     return (
         <Card className="card card--skills card--hoverable h-100">
-            {src ? (
-                <Card.Img className="card__picture" src={src} alt={name} title={name} />
-            ) : (
-                <Icon className="card__picture card__picture--icon" aria-hidden="true" />
-            )}
+            <span className="card__picture-badge">
+                {src ? (
+                    <Card.Img className="card__picture" src={src} alt={name} title={name} />
+                ) : (
+                    <Icon className="card__picture card__picture--icon" aria-hidden="true" />
+                )}
+            </span>
             <Card.Title className="card__title">{name}</Card.Title>
         </Card>
     );

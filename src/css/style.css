@@ -232,25 +232,36 @@ body {
 
 /* SKILLS SECTION */
 #Skills .card--skills {
-	padding: 1em;
+	padding: 1.25em 1em;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: 0.5em;
-	background: var(--panel-bg);
+	gap: 0.75em;
+	background: linear-gradient(160deg, var(--panel-bg), rgba(255, 255, 255, 0.02));
 	border: 1px solid var(--panel-border);
 }
 
+#Skills .card__picture-badge {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background: radial-gradient(circle at 35% 30%, rgba(230, 75, 160, 0.28), rgba(230, 75, 160, 0.08));
+	border: 1px solid rgba(230, 75, 160, 0.3);
+}
+
 #Skills .card--skills .card__picture {
-	width: 56px;
-	height: 56px;
+	width: 32px;
+	height: 32px;
 	object-fit: contain;
 }
 
 #Skills .card--skills .card__picture--icon {
 	color: #fff;
-	stroke-width: 1.4;
+	stroke-width: 1.6;
 }
 
 #Skills .card--skills .card__title {
@@ -261,26 +272,6 @@ body {
 
 #Skills .skills__subtitle {
 	margin-top: 0.5rem;
-}
-
-/* ABOUT ME SECTION */
-#AboutMe .aboutme__illustration {
-	max-width: 260px;
-}
-
-#AboutMe .card__quote {
-	background: var(--panel-bg);
-	border: 1px solid var(--panel-border);
-	border-radius: var(--border-radius);
-	margin: 1.5rem 0;
-}
-
-#AboutMe .card__quote .card-body {
-	padding: 1.5rem;
-}
-
-#AboutMe .card__quote * {
-	color: #fff;
 }
 
 /* PROFESSIONAL EXPERIENCE — timeline */
@@ -355,19 +346,19 @@ body {
 }
 
 /* CONTACT SECTION */
-.contact-links {
-	display: flex;
-	flex-direction: column;
-	gap: 0.9rem;
-}
-
 .contact-links__item {
 	display: flex;
 	align-items: center;
 	gap: 0.75rem;
+	height: 100%;
+	padding: 1rem 1.1rem;
+	background: var(--panel-bg);
+	border: 1px solid var(--panel-border);
+	border-radius: var(--border-radius);
 	color: #fff;
 	text-decoration: none;
 	font-size: 0.95rem;
+	transition: color 0.2s ease, transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .contact-links__item svg {
@@ -378,28 +369,9 @@ body {
 
 .contact-links__item:hover {
 	color: var(--accent);
-}
-
-/* honeypot anti-spam: fora da tela pra humanos, mas presente no DOM pra bots */
-.contact-honeypot {
-	position: absolute;
-	left: -9999px;
-	width: 1px;
-	height: 1px;
-	overflow: hidden;
-}
-
-#Contact .form-control {
-	background: var(--panel-bg);
-	border: 1px solid var(--panel-border);
-	color: #fff;
-}
-
-#Contact .form-control:focus {
-	background: var(--panel-bg);
-	color: #fff;
-	border-color: var(--accent);
-	box-shadow: 0 0 0 0.2rem rgba(230, 75, 160, 0.25);
+	border-color: rgba(230, 75, 160, 0.5);
+	transform: translateY(-4px);
+	box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
 }
 
 /* ANIMATIONS — scroll-reveal, hover micro-interactions, typewriter do hero.
@@ -438,11 +410,12 @@ body {
 	border-color: rgba(230, 75, 160, 0.5);
 }
 
-#Skills .card--skills.card--hoverable:hover .card__picture {
-	transform: scale(1.12);
+#Skills .card--skills.card--hoverable:hover .card__picture-badge {
+	transform: scale(1.1);
+	border-color: var(--accent);
 }
-#Skills .card__picture {
-	transition: transform 0.25s ease;
+#Skills .card__picture-badge {
+	transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
 /* HOVER — links de navegação com sublinhado animado */
@@ -483,13 +456,6 @@ body {
 .pill--accent:hover {
 	transform: translateY(-2px);
 	border-color: var(--accent);
-}
-
-.contact-links__item {
-	transition: color 0.2s ease, transform 0.2s ease;
-}
-.contact-links__item:hover {
-	transform: translateX(4px);
 }
 
 /* TIMELINE — marcador com pulso suave enquanto o item está aberto */

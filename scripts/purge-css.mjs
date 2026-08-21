@@ -32,7 +32,11 @@ const result = await new PurgeCSS().purge({
       /^offcanvas/, /^modal/, /^dropdown/, // react-bootstrap components used elsewhere
       "visually-hidden",
       /^reveal/, // Reveal.js monta "reveal--" + variant via template literal
-
+      // grid do react-bootstrap: Col/Row montam "col-md-5", "row-cols-md-4"
+      // etc. via template literal DENTRO da própria lib — nunca aparecem
+      // como string literal completa no nosso bundle, então o PurgeCSS
+      // nunca acha e removia essas regras (quebrava todo layout em coluna).
+      /^col(-|$)/, /^row-cols/, /^offset-/, /^order-/, /^g-/, /^gx-/, /^gy-/,
     ],
   },
 });
