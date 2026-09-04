@@ -1,21 +1,29 @@
-import { Container, Row, Col, Image } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import avatar from '../img/avatar.jpg';
 import { useLanguage } from '../i18n/LanguageContext.js';
 import Reveal from './Reveal.js';
 import TypewriterRoles from './TypewriterRoles.js';
+import { useScrollBlur } from '../hooks/useScrollBlur.js';
 
 function Intro() {
     const { t } = useLanguage();
+    // placeholder: a Cindy vai mandar uma foto melhor pra esse tratamento de bg depois
+    const { ref: sectionRef, blur } = useScrollBlur(14);
+
     return (
-        <section id="intro" className="section-spacing">
-            <Container>
-                <Row className="align-items-center">
-                    <Col md={5} className="d-flex justify-content-center">
-                        <Reveal variant="scale">
-                            <Image src={avatar} alt="Cindy Santos" className="intro__image" roundedCircle />
-                        </Reveal>
-                    </Col>
-                    <Col md={7}>
+        <section id="intro" ref={sectionRef} className="section-spacing intro--hero">
+            <div className="intro__bg d-none d-md-block">
+                <img
+                    src={avatar}
+                    alt="Cindy Santos"
+                    className="intro__bg-image"
+                    style={blur > 0.1 ? { filter: `blur(${blur}px)` } : undefined}
+                />
+                <div className="intro__bg-fade" aria-hidden="true" />
+            </div>
+            <Container className="position-relative">
+                <Row>
+                    <Col md={7} lg={6}>
                         <Reveal variant="up" as="p" className="intro__eyebrow">{t.intro.eyebrow}</Reveal>
                         <Reveal variant="up" delay={80} as="p" className="intro__role">
                             <TypewriterRoles roles={t.intro.roles} />

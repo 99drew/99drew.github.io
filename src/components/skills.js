@@ -13,15 +13,9 @@ import wordpress from '../img/icons/tech/wordpress.svg';
 import git from '../img/icons/tech/git.svg';
 import n8n from '../img/icons/tech/n8n.svg';
 import react from '../img/icons/tech/react.svg';
-import typescript from '../img/icons/tech/typescript.svg';
-import bem from '../img/icons/tech/bem.svg';
-import bitbucket from '../img/icons/tech/bitbucket.svg';
-import jira from '../img/icons/tech/jira.svg';
-import runrunit from '../img/icons/tech/runrunit.svg';
 import googleAnalytics from '../img/icons/tech/google-analytics.svg';
 import googleSearchConsole from '../img/icons/tech/google-search-console.svg';
 import semrush from '../img/icons/tech/semrush.svg';
-import lookerStudio from '../img/icons/tech/looker-studio.svg';
 
 // Tecnologias — logos reais (SVG, brancos) para as que têm marca própria;
 // ícone genérico só pra SQL (linguagem, não uma marca) e Agentes de IA (conceito).
@@ -37,24 +31,20 @@ function getTechnologies(aiAgentsLabel) {
         { name: 'Git', src: git },
         { name: 'n8n', src: n8n },
         { name: 'React', src: react },
-        { name: 'TypeScript', src: typescript },
-        { name: 'BEM', src: bem },
         { name: aiAgentsLabel, Icon: Bot },
     ];
 }
 
 // Ferramentas — mesma lógica; Ahrefs não tem logo de marca disponível na
 // biblioteca de ícones usada, então recebe um ícone genérico em vez de um
-// logo de outra marca.
+// logo de outra marca. Bitbucket/Jira/Runrun.it/Looker Studio não entram
+// como cards de destaque — só uma observação discreta (toolsNote) abaixo
+// da grade, já que são ferramentas de apoio, não o foco principal.
 const TOOLS = [
-    { name: 'Bitbucket', src: bitbucket },
-    { name: 'Jira', src: jira },
-    { name: 'Runrun.it', src: runrunit },
     { name: 'Google Analytics', src: googleAnalytics },
     { name: 'Google Search Console', src: googleSearchConsole },
     { name: 'Semrush', src: semrush },
     { name: 'Ahrefs', Icon: TrendingUp },
-    { name: 'Looker Studio', src: lookerStudio },
 ];
 
 function IconCard({ name, src, Icon }) {
@@ -112,6 +102,7 @@ function Skills() {
                         </Col>
                     ))}
                 </Row>
+                <Reveal as="p" className="skills__tools-note">{t.skills.toolsNote}</Reveal>
             </Container>
         </section>
     );
