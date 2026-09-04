@@ -35,6 +35,7 @@ export const content = {
             ],
             technologiesLabel: 'Tecnologias',
             toolsLabel: 'Ferramentas',
+            toolsNote: 'Alguns fluxos de trabalho também envolvem Bitbucket, Jira, Runrun.it e Looker Studio.',
         },
         experience: {
             title: 'Experiência Profissional',
@@ -150,6 +151,7 @@ export const content = {
             ],
             technologiesLabel: 'Technologies',
             toolsLabel: 'Tools',
+            toolsNote: 'Some workflows also involve Bitbucket, Jira, Runrun.it, and Looker Studio.',
         },
         experience: {
             title: 'Professional Experience',

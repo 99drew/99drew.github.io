@@ -21,6 +21,22 @@ body {
 	padding-top: calc(var(--section-gap) + 3rem);
 }
 
+.site-footer {
+	padding: 1.75rem 0;
+	border-top: 1px solid var(--panel-border);
+}
+
+.site-footer__text {
+	margin: 0;
+	text-align: center;
+	color: rgba(255, 255, 255, 0.55);
+	font-size: 0.85rem;
+}
+
+.site-footer__text b {
+	color: rgba(255, 255, 255, 0.85);
+}
+
 /* BG — arte decorativa em SVG, gerada em backgroundArt.js (ver esse arquivo
    pro motivo de não ser mais uma imagem estática) */
 .bg-art-root {
@@ -184,12 +200,39 @@ body {
 }
 
 /* INTRO SECTION */
-#intro .intro__image {
+.intro--hero {
+	position: relative;
+	overflow: hidden;
+	min-height: 560px;
+	display: flex;
+	align-items: center;
+}
+
+/* Foto como plano de fundo do lado direito, não mais avatar circular —
+   troca por uma versão melhor está prevista, isso aqui é o tratamento. */
+.intro__bg {
+	position: absolute;
+	inset: 0;
+	left: 45%;
+	z-index: 0;
+}
+
+.intro__bg-image {
 	width: 100%;
-	max-width: 320px;
-	aspect-ratio: 1 / 1;
+	height: 100%;
 	object-fit: cover;
-	border: 3px solid var(--panel-border);
+	object-position: center 20%;
+	display: block;
+	transition: filter 0.1s linear;
+}
+
+/* esmaece a imagem pra dentro da cor de fundo do body, pra não cortar seco
+   em cima do texto */
+.intro__bg-fade {
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to right, #060239 0%, rgba(6, 2, 57, 0.75) 20%, rgba(6, 2, 57, 0.15) 55%, transparent 80%),
+		linear-gradient(to bottom, transparent 70%, #060239 100%);
 }
 
 #intro .intro__eyebrow {
@@ -272,6 +315,13 @@ body {
 
 #Skills .skills__subtitle {
 	margin-top: 0.5rem;
+}
+
+.skills__tools-note {
+	margin-top: 0.75rem;
+	color: rgba(255, 255, 255, 0.5);
+	font-size: 0.8rem;
+	font-style: italic;
 }
 
 /* PROFESSIONAL EXPERIENCE — timeline */
@@ -506,6 +556,10 @@ body {
 
 	#intro .intro__title {
 		font-size: 1.9rem;
+	}
+
+	.intro--hero {
+		min-height: auto;
 	}
 
 	.timeline__header {
