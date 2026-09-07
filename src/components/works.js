@@ -7,7 +7,7 @@ import { useLanguage } from '../i18n/LanguageContext.js';
 const LINKS = [
     {
         liveHref: 'https://99drew.github.io/treino/',
-        repoHref: 'https://github.com/99drew/99drew.github.io/tree/main/treino-app',
+        repoHref: 'https://github.com/99drew/99drew.github.io/tree/main/99drews-training',
     },
     {
         liveHref: 'https://99drew.github.io/',

@@ -1,4 +1,4 @@
-# Treino — Massa & Definição (PWA)
+# 99drew's Training (PWA)
 
 App pessoal de treino: plano A/B/C, registro de séries com cronômetro de descanso,
 progresso (cargas + volume por grupo muscular + recordes), medidas corporais e fotos
@@ -74,11 +74,11 @@ precisa escolher um ou outro.
 3. Implante a pasta [`/server`](./server) como um projeto Vercel separado (é só
    funções serverless, `vercel deploy` dentro de `server/` resolve). Configure as
    variáveis de ambiente do projeto Vercel com base em [`server/.env.example`](./server/.env.example).
-4. No build do `treino-app`, defina `VITE_PUSH_SERVER_URL` (a URL do projeto Vercel
-   do passo 3) e `VITE_VAPID_PUBLIC_KEY` (a chave pública gerada no passo 1) — ver
-   [`.env.example`](./.env.example). Sem essas duas variáveis, o app não tenta usar
-   push real e segue só no melhor esforço.
-5. Rebuild e reimplante o `treino-app`.
+4. No build do `99drews-training`, defina `VITE_PUSH_SERVER_URL` (a URL do projeto
+   Vercel do passo 3) e `VITE_VAPID_PUBLIC_KEY` (a chave pública gerada no passo 1) —
+   ver [`.env.example`](./.env.example). Sem essas duas variáveis, o app não tenta
+   usar push real e segue só no melhor esforço.
+5. Rebuild e reimplante o `99drews-training`.
 
 ## Persistência de dados
 
@@ -97,11 +97,17 @@ adicionaria login, sincronização de conflitos e mais uma peça de infra pra ma
 vale o custo se a perda de dados por troca de aparelho virar um problema de verdade.
 Dá pra pedir esse próximo passo quando fizer sentido.
 
+Por isso o nome do banco IndexedDB em `src/lib/db.js` (`DB_NAME = "treino-app"`)
+continua com o nome antigo mesmo depois do rebranding: é só um identificador técnico
+interno, invisível pra quem usa o app, e trocá-lo faria o navegador abrir um banco
+novo e vazio — apagando na prática todo o histórico de treinos, medidas, fotos e
+avatar já salvos no aparelho da Cindy.
+
 ## Deploy
 
 O workflow [`../.github/workflows/deploy-treino.yml`](../.github/workflows/deploy-treino.yml)
 publica automaticamente em **`https://99drew.github.io/treino/`** a cada push em
-`main` que toque em `treino-app/**` (reaproveita o GitHub Pages que já serve o
+`main` que toque em `99drews-training/**` (reaproveita o GitHub Pages que já serve o
 portfólio na raiz do mesmo repositório, sem mexer no workflow existente — usa
 `destination_dir: treino` + `keep_files: true` pra só tocar nessa subpasta do branch
 `gh-pages`). HTTPS já vem de graça do GitHub Pages, que é obrigatório pra
@@ -112,6 +118,12 @@ acima) sem precisar de conta em nenhum serviço além do GitHub. Pra notificaç�
 confiável com tela bloqueada, ver "Ativando o Web Push real" acima — isso exige um
 projeto à parte na Vercel (ou outro host com serverless functions), porque GitHub
 Pages é só arquivos estáticos.
+
+A URL de produção continua `/treino/` (não `/training/`) de propósito: é o `id` e o
+`scope` gravados no manifest do PWA já instalado no iPhone da Cindy — mudar o path
+faria o iOS tratar como um app novo, perdendo o ícone na Tela de Início e obrigando a
+reinstalar. O nome visível do app (título, ícone na Tela de Início, manifest `name`)
+já reflete "99drew's Training"; só o endereço técnico ficou igual.
 
 ### Instalando no iPhone
 
