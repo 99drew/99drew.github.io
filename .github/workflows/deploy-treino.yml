@@ -1,11 +1,11 @@
-name: deploy treino-app
+name: deploy 99drew's Training
 
 on:
   push:
     branches:
       - main
     paths:
-      - "treino-app/**"
+      - "99drews-training/**"
       - ".github/workflows/deploy-treino.yml"
   workflow_dispatch:
 
@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: treino-app
+        working-directory: 99drews-training
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -27,10 +27,13 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+      # destino /treino intencionalmente inalterado: é o path gravado no manifest
+      # (id/scope) do PWA já instalado no iPhone — trocar aqui faria o iOS tratar
+      # como um app novo. Ver nota no README do 99drews-training.
       - name: Deploy to gh-pages (/treino)
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./treino-app/dist
+          publish_dir: ./99drews-training/dist
           destination_dir: treino
           keep_files: true

@@ -16,8 +16,8 @@ export default defineConfig({
       injectRegister: false, // registro manual em src/main.jsx (precisa do retorno do updateSW)
       manifest: {
         id: BASE,
-        name: "Treino — Massa & Definição",
-        short_name: "Treino",
+        name: "99drew's Training",
+        short_name: "Training",
         description: "App pessoal de treino: registro de séries, cronômetro de descanso, progresso e fotos de evolução.",
         start_url: BASE,
         scope: BASE,
